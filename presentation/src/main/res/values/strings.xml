@@ -1,0 +1,16 @@
+<resources>
+    <!-- Screen -->
+    <string name="sports_screen_title">Sports</string>
+    <string name="no_events_available">No events available</string>
+
+    <!-- Error -->
+    <string name="retry">Retry</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_add_to_favorites">Add to favorites</string>
+    <string name="cd_remove_from_favorites">Remove from favorites</string>
+    <string name="cd_show_favorites_only">Show favorites only</string>
+    <string name="cd_show_all_events">Show all events</string>
+    <string name="cd_expand">Expand</string>
+    <string name="cd_collapse">Collapse</string>
+</resources>

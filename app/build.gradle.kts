@@ -1,8 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.ksp)
 }
 
 android {
@@ -44,35 +42,38 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain:api"))
+    implementation(project(":domain:impl"))
+    implementation(project(":remote:api"))
+    implementation(project(":remote:impl"))
+    implementation(project(":local:api"))
+    implementation(project(":local:impl"))
+    implementation(project(":data"))
+    implementation(project(":presentation"))
+
     // Core
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.activity.compose)
 
-    // Compose
+    // Compose (for MainActivity setContent)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.graphics)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.material3)
-
-    // Ktor
-    implementation(libs.ktor.client.android)
-    implementation(libs.ktor.client.content.negotiation)
-    implementation(libs.ktor.serialization.kotlinx.json)
-    implementation(libs.ktor.client.logging)
 
     // Koin
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
 
-    // Room
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
-    ksp(libs.room.compiler)
+    // Ktor (for HttpClient construction in DI)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.logging)
 
-    // Serialization
+    // Room (for Room.databaseBuilder in DI)
+    implementation(libs.room.runtime)
+
+    // Serialization (for Json { } in DI)
     implementation(libs.kotlinx.serialization.json)
 
     // Test

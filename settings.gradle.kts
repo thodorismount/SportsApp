@@ -24,4 +24,12 @@ dependencyResolutionManagement {
 
 rootProject.name = "SportsApp"
 include(":app")
+include(":domain:api")
+include(":domain:impl")
+include(":remote:api")
+include(":remote:impl")
+include(":local:api")
+include(":local:impl")
+include(":data")
+include(":presentation")
  
