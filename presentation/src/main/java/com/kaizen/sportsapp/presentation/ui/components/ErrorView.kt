@@ -12,10 +12,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.kaizen.sportsapp.presentation.R
 import com.kaizen.sportsapp.presentation.ui.theme.SportsAppTheme
 
@@ -35,10 +35,10 @@ fun ErrorView(
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.error,
             textAlign = TextAlign.Center,
-            modifier = Modifier.padding(horizontal = 32.dp)
+            modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.spacing_xxl))
         )
         if (onRetry != null) {
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_l)))
             Button(onClick = onRetry) {
                 Text(text = stringResource(R.string.retry))
             }

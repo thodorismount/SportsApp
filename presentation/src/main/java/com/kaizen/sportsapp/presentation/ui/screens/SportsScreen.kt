@@ -27,8 +27,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import com.kaizen.sportsapp.presentation.R
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -149,8 +149,11 @@ private fun SportEventRow(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(MaterialTheme.colorScheme.background),
-            contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+            contentPadding = PaddingValues(
+                horizontal = dimensionResource(R.dimen.spacing_s),
+                vertical = dimensionResource(R.dimen.spacing_s)
+            ),
+            horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_s))
         ) {
             items(items = sport.displayedEvents, key = { it.id }) { event ->
                 EventCard(

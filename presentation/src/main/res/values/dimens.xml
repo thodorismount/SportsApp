@@ -1,0 +1,15 @@
+<resources>
+    <!-- Spacing — padding, margins, spacers -->
+    <dimen name="spacing_xxs">2dp</dimen>
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_s">8dp</dimen>
+    <dimen name="spacing_m">12dp</dimen>
+    <dimen name="spacing_l">16dp</dimen>
+    <dimen name="spacing_xl">24dp</dimen>
+    <dimen name="spacing_xxl">32dp</dimen>
+
+    <!-- Sizes -->
+    <dimen name="icon_size_s">20dp</dimen>
+    <dimen name="corner_radius_s">8dp</dimen>
+    <dimen name="event_card_width">100dp</dimen>
+</resources>

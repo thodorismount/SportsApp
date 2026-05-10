@@ -19,9 +19,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import com.kaizen.sportsapp.presentation.R
 import com.kaizen.sportsapp.presentation.model.SportModel
@@ -38,7 +38,10 @@ fun SportSectionHeader(
         modifier = modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.surface)
-            .padding(horizontal = 16.dp, vertical = 4.dp),
+            .padding(
+                horizontal = dimensionResource(R.dimen.spacing_l),
+                vertical = dimensionResource(R.dimen.spacing_xs)
+            ),
         verticalAlignment = Alignment.CenterVertically
     ) {
         sport.icon?.let { iconRes ->
@@ -46,9 +49,9 @@ fun SportSectionHeader(
                 painter = painterResource(iconRes),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.size(20.dp)
+                modifier = Modifier.size(dimensionResource(R.dimen.icon_size_s))
             )
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.width(dimensionResource(R.dimen.spacing_s)))
         }
         Text(
             text = sport.name,

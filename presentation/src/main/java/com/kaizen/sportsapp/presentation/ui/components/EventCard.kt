@@ -19,10 +19,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import com.kaizen.sportsapp.presentation.R
 import com.kaizen.sportsapp.presentation.model.EventModel
@@ -43,10 +43,13 @@ fun EventCard(
 
     Column(
         modifier = modifier
-            .width(100.dp)
-            .clip(RoundedCornerShape(8.dp))
+            .width(dimensionResource(R.dimen.event_card_width))
+            .clip(RoundedCornerShape(dimensionResource(R.dimen.corner_radius_s)))
             .background(MaterialTheme.colorScheme.surface)
-            .padding(horizontal = 8.dp, vertical = 12.dp),
+            .padding(
+                horizontal = dimensionResource(R.dimen.spacing_s),
+                vertical = dimensionResource(R.dimen.spacing_m)
+            ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
@@ -54,7 +57,7 @@ fun EventCard(
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.primary
         )
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_xs)))
         IconButton(onClick = onFavoriteClick) {
             Icon(
                 imageVector = if (event.isFavorite) Icons.Filled.Star else Icons.Filled.StarBorder,
@@ -62,7 +65,7 @@ fun EventCard(
                 tint = if (event.isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
             )
         }
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_xs)))
         Text(
             text = event.competitor1,
             style = MaterialTheme.typography.labelSmall,
@@ -71,13 +74,13 @@ fun EventCard(
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurface
         )
-        Spacer(modifier = Modifier.height(2.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_xxs)))
         Text(
             text = stringResource(R.string.label_vs),
             style = MaterialTheme.typography.labelSmall,
             color = AccentRed
         )
-        Spacer(modifier = Modifier.height(2.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_xxs)))
         Text(
             text = event.competitor2,
             style = MaterialTheme.typography.labelSmall,
