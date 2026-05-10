@@ -2,6 +2,7 @@ package com.kaizen.sportsapp.presentation.ui.theme
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
 private val KaizenDarkColorScheme = darkColorScheme(
@@ -19,10 +20,28 @@ private val KaizenDarkColorScheme = darkColorScheme(
     onError = White
 )
 
+private val KaizenLightColorScheme = lightColorScheme(
+    primary = Gold,
+    onPrimary = Black,
+    secondary = PrimaryBlue,
+    onSecondary = White,
+    tertiary = AccentRed,
+    onTertiary = White,
+    background = White,
+    onBackground = Black,
+    surface = LightGray,
+    onSurface = Black,
+    error = AccentRed,
+    onError = White
+)
+
 @Composable
-fun SportsAppTheme(content: @Composable () -> Unit) {
+fun SportsAppTheme(
+    darkTheme: Boolean = true,
+    content: @Composable () -> Unit
+) {
     MaterialTheme(
-        colorScheme = KaizenDarkColorScheme,
+        colorScheme = if (darkTheme) KaizenDarkColorScheme else KaizenLightColorScheme,
         typography = Typography,
         content = content
     )

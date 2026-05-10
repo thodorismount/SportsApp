@@ -11,8 +11,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.NightsStay
+import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -39,7 +44,11 @@ import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SportsScreen(viewModel: SportsViewModel = koinViewModel()) {
+fun SportsScreen(
+    isDarkTheme: Boolean,
+    onToggleTheme: () -> Unit,
+    viewModel: SportsViewModel = koinViewModel()
+) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val error = uiState.errorMessage
 
@@ -51,6 +60,15 @@ fun SportsScreen(viewModel: SportsViewModel = koinViewModel()) {
                         text = stringResource(R.string.sports_screen_title),
                         color = MaterialTheme.colorScheme.onSecondary
                     )
+                },
+                actions = {
+                    IconButton(onClick = onToggleTheme) {
+                        Icon(
+                            imageVector = if (isDarkTheme) Icons.Filled.WbSunny else Icons.Filled.NightsStay,
+                            contentDescription = stringResource(if (isDarkTheme) R.string.cd_switch_to_light else R.string.cd_switch_to_dark),
+                            tint = MaterialTheme.colorScheme.onSecondary
+                        )
+                    }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.secondary
@@ -156,7 +174,14 @@ private val previewSports = listOf(
         icon = R.drawable.ic_sport_soccer,
         events = listOf(
             EventModel("1", "FOOT", "PAOK", "Olympiakos", previewTime + 3_600, isFavorite = true),
-            EventModel("2", "FOOT", "Man United", "Chelsea", previewTime + 7_200, isFavorite = false)
+            EventModel(
+                "2",
+                "FOOT",
+                "Man United",
+                "Chelsea",
+                previewTime + 7_200,
+                isFavorite = false
+            )
         ),
         isExpanded = true,
         showFavoritesOnly = false
@@ -176,7 +201,7 @@ private val previewSports = listOf(
 @Preview(showBackground = true, backgroundColor = 0xFF000000)
 @Composable
 private fun SportsScreenLoadingPreview() {
-    SportsAppTheme {
+    SportsAppTheme(darkTheme = true) {
         Box(modifier = Modifier.fillMaxSize()) {
             CircularProgressIndicator(
                 modifier = Modifier.align(Alignment.Center),
@@ -189,7 +214,7 @@ private fun SportsScreenLoadingPreview() {
 @Preview(showBackground = true, backgroundColor = 0xFF000000)
 @Composable
 private fun SportsScreenErrorPreview() {
-    SportsAppTheme {
+    SportsAppTheme(darkTheme = true) {
         ErrorView(
             message = "No internet connection. Please check your network.",
             onRetry = {}
@@ -199,8 +224,25 @@ private fun SportsScreenErrorPreview() {
 
 @Preview(showBackground = true, backgroundColor = 0xFF000000)
 @Composable
-private fun SportsScreenContentPreview() {
-    SportsAppTheme {
+private fun SportsScreenContentDarkPreview() {
+    SportsAppTheme(darkTheme = true) {
+        SportsList(
+            uiState = SportsScreenState(
+                isLoading = false,
+                sports = previewSports,
+                currentTimeSeconds = previewTime
+            ),
+            onToggleExpanded = {},
+            onToggleFavoritesFilter = {},
+            onToggleFavorite = {}
+        )
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
+@Composable
+private fun SportsScreenContentLightPreview() {
+    SportsAppTheme(darkTheme = false) {
         SportsList(
             uiState = SportsScreenState(
                 isLoading = false,
