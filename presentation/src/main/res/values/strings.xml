@@ -3,6 +3,9 @@
     <string name="sports_screen_title">Sports</string>
     <string name="no_events_available">No events available</string>
 
+    <!-- Event card -->
+    <string name="label_vs">VS</string>
+
     <!-- Error -->
     <string name="retry">Retry</string>
 

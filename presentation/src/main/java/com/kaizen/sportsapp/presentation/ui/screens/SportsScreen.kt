@@ -153,16 +153,10 @@ private val previewSports = listOf(
     SportModel(
         id = "FOOT",
         name = "Football",
+        icon = R.drawable.ic_sport_soccer,
         events = listOf(
             EventModel("1", "FOOT", "PAOK", "Olympiakos", previewTime + 3_600, isFavorite = true),
-            EventModel(
-                "2",
-                "FOOT",
-                "Man United",
-                "Chelsea",
-                previewTime + 7_200,
-                isFavorite = false
-            )
+            EventModel("2", "FOOT", "Man United", "Chelsea", previewTime + 7_200, isFavorite = false)
         ),
         isExpanded = true,
         showFavoritesOnly = false
@@ -170,6 +164,7 @@ private val previewSports = listOf(
     SportModel(
         id = "BASK",
         name = "Basketball",
+        icon = R.drawable.ic_sport_basketball,
         events = listOf(
             EventModel("3", "BASK", "Lakers", "Celtics", previewTime + 1_800, isFavorite = false)
         ),
@@ -182,12 +177,12 @@ private val previewSports = listOf(
 @Composable
 private fun SportsScreenLoadingPreview() {
     SportsAppTheme {
-        SportsList(
-            uiState = SportsScreenState(isLoading = true),
-            onToggleExpanded = {},
-            onToggleFavoritesFilter = {},
-            onToggleFavorite = {}
-        )
+        Box(modifier = Modifier.fillMaxSize()) {
+            CircularProgressIndicator(
+                modifier = Modifier.align(Alignment.Center),
+                color = MaterialTheme.colorScheme.primary
+            )
+        }
     }
 }
 

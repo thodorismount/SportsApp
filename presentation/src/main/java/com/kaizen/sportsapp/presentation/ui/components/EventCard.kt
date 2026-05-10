@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import com.kaizen.sportsapp.presentation.R
 import com.kaizen.sportsapp.presentation.model.EventModel
+import com.kaizen.sportsapp.presentation.ui.theme.AccentRed
 import com.kaizen.sportsapp.presentation.ui.theme.SportsAppTheme
 
 @Composable
@@ -69,6 +70,12 @@ fun EventCard(
             overflow = TextOverflow.Ellipsis,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurface
+        )
+        Spacer(modifier = Modifier.height(2.dp))
+        Text(
+            text = stringResource(R.string.label_vs),
+            style = MaterialTheme.typography.labelSmall,
+            color = AccentRed
         )
         Spacer(modifier = Modifier.height(2.dp))
         Text(

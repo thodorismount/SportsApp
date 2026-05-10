@@ -2,8 +2,11 @@ package com.kaizen.sportsapp.presentation.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
@@ -16,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,6 +41,15 @@ fun SportSectionHeader(
             .padding(horizontal = 16.dp, vertical = 4.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
+        sport.icon?.let { iconRes ->
+            Icon(
+                painter = painterResource(iconRes),
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurface,
+                modifier = Modifier.size(20.dp)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+        }
         Text(
             text = sport.name,
             style = MaterialTheme.typography.titleMedium,
@@ -69,6 +82,7 @@ private fun SportSectionHeaderExpandedPreview() {
                 id = "FOOT",
                 name = "Football",
                 events = emptyList(),
+                icon = R.drawable.ic_sport_soccer,
                 isExpanded = true,
                 showFavoritesOnly = false
             ),
@@ -87,6 +101,7 @@ private fun SportSectionHeaderCollapsedFavoritesPreview() {
                 id = "BASK",
                 name = "Basketball",
                 events = emptyList(),
+                icon = R.drawable.ic_sport_basketball,
                 isExpanded = false,
                 showFavoritesOnly = true
             ),

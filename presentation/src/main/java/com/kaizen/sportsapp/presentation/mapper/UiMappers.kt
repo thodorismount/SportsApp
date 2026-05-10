@@ -4,12 +4,15 @@ import com.kaizen.sportsapp.domain.model.Sport
 import com.kaizen.sportsapp.domain.model.SportEvent
 import com.kaizen.sportsapp.presentation.model.EventModel
 import com.kaizen.sportsapp.presentation.model.SportModel
+import com.kaizen.sportsapp.presentation.model.SportType
+import com.kaizen.sportsapp.presentation.model.sportTypeFromId
 
 /** Maps a [Sport] domain model to its UI representation. */
 fun Sport.toUiModel() = SportModel(
     id = id,
     name = name,
-    events = events.map { it.toUiModel() }
+    events = events.map { it.toUiModel() },
+    icon = sportTypeFromId(id).iconRes
 )
 
 /**

@@ -2,9 +2,11 @@ package com.kaizen.sportsapp.presentation.mapper
 
 import com.kaizen.sportsapp.domain.model.Sport
 import com.kaizen.sportsapp.domain.model.SportEvent
+import com.kaizen.sportsapp.presentation.model.SportType
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 private const val SPORT_ID_FOOTBALL = "FOOT"
@@ -25,6 +27,23 @@ internal class UiMappersTest {
         // then
         assertEquals(SPORT_ID_FOOTBALL, model.id)
         assertEquals(SPORT_NAME_FOOTBALL, model.name)
+    }
+
+    @Test
+    fun `Sport toUiModel assigns correct icon for each known sport id`() {
+        // given / when / then
+        SportType.entries.filter { it != SportType.UNKNOWN }.forEach { sportType ->
+            val model = Sport(id = sportType.name, name = sportType.name, events = emptyList()).toUiModel()
+            assertEquals(sportType.iconRes, model.icon)
+        }
+    }
+
+    @Test
+    fun `Sport toUiModel assigns null icon for unknown sport id`() {
+        // given / when
+        val model = Sport(id = "UNKNOWN", name = "Unknown", events = emptyList()).toUiModel()
+        // then
+        assertNull(model.icon)
     }
 
     @Test

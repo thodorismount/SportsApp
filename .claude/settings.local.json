@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(./gradlew :app:dependencies --configuration releaseRuntimeClasspath)",
-      "Bash(./gradlew :app:compileDebugKotlin --rerun-tasks)"
+      "Bash(./gradlew :app:compileDebugKotlin --rerun-tasks)",
+      "Bash(curl *)"
     ]
   }
 }
