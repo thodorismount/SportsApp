@@ -29,6 +29,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.kaizen.sportsapp.presentation.R
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -42,7 +44,6 @@ import com.kaizen.sportsapp.presentation.ui.components.EventCard
 import com.kaizen.sportsapp.presentation.ui.components.SportSectionHeader
 import org.koin.androidx.compose.koinViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SportsScreen(
     isDarkTheme: Boolean,
@@ -50,6 +51,28 @@ fun SportsScreen(
     viewModel: SportsViewModel = koinViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    SportsScreen(
+        isDarkTheme = isDarkTheme,
+        onToggleTheme = onToggleTheme,
+        uiState = uiState,
+        onToggleExpanded = viewModel::toggleExpanded,
+        onToggleFavoritesFilter = viewModel::toggleFavoritesFilter,
+        onToggleFavorite = viewModel::toggleFavorite,
+        onRetry = viewModel::retry
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun SportsScreen(
+    isDarkTheme: Boolean,
+    onToggleTheme: () -> Unit,
+    uiState: SportsScreenState,
+    onToggleExpanded: (sportId: String) -> Unit,
+    onToggleFavoritesFilter: (sportId: String) -> Unit,
+    onToggleFavorite: (eventId: String) -> Unit,
+    onRetry: () -> Unit
+) {
     val error = uiState.errorMessage
 
     Scaffold(
@@ -84,13 +107,15 @@ fun SportsScreen(
         ) {
             when {
                 uiState.isLoading -> CircularProgressIndicator(
-                    modifier = Modifier.align(Alignment.Center),
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .semantics { testTag = TestTags.LOADING_INDICATOR },
                     color = MaterialTheme.colorScheme.primary
                 )
 
                 error != null -> ErrorView(
                     message = error,
-                    onRetry = viewModel::retry
+                    onRetry = onRetry
                 )
 
                 uiState.sports.isEmpty() -> Text(
@@ -102,9 +127,9 @@ fun SportsScreen(
 
                 else -> SportsList(
                     uiState = uiState,
-                    onToggleExpanded = viewModel::toggleExpanded,
-                    onToggleFavoritesFilter = viewModel::toggleFavoritesFilter,
-                    onToggleFavorite = viewModel::toggleFavorite
+                    onToggleExpanded = onToggleExpanded,
+                    onToggleFavoritesFilter = onToggleFavoritesFilter,
+                    onToggleFavorite = onToggleFavorite
                 )
             }
         }
@@ -205,12 +230,15 @@ private val previewSports = listOf(
 @Composable
 private fun SportsScreenLoadingPreview() {
     SportsAppTheme(darkTheme = true) {
-        Box(modifier = Modifier.fillMaxSize()) {
-            CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center),
-                color = MaterialTheme.colorScheme.primary
-            )
-        }
+        SportsScreen(
+            isDarkTheme = true,
+            onToggleTheme = {},
+            uiState = SportsScreenState(isLoading = true),
+            onToggleExpanded = {},
+            onToggleFavoritesFilter = {},
+            onToggleFavorite = {},
+            onRetry = {}
+        )
     }
 }
 
@@ -218,8 +246,16 @@ private fun SportsScreenLoadingPreview() {
 @Composable
 private fun SportsScreenErrorPreview() {
     SportsAppTheme(darkTheme = true) {
-        ErrorView(
-            message = "No internet connection. Please check your network.",
+        SportsScreen(
+            isDarkTheme = true,
+            onToggleTheme = {},
+            uiState = SportsScreenState(
+                isLoading = false,
+                errorMessage = "No internet connection. Please check your network."
+            ),
+            onToggleExpanded = {},
+            onToggleFavoritesFilter = {},
+            onToggleFavorite = {},
             onRetry = {}
         )
     }
@@ -229,7 +265,9 @@ private fun SportsScreenErrorPreview() {
 @Composable
 private fun SportsScreenContentDarkPreview() {
     SportsAppTheme(darkTheme = true) {
-        SportsList(
+        SportsScreen(
+            isDarkTheme = true,
+            onToggleTheme = {},
             uiState = SportsScreenState(
                 isLoading = false,
                 sports = previewSports,
@@ -237,7 +275,8 @@ private fun SportsScreenContentDarkPreview() {
             ),
             onToggleExpanded = {},
             onToggleFavoritesFilter = {},
-            onToggleFavorite = {}
+            onToggleFavorite = {},
+            onRetry = {}
         )
     }
 }
@@ -246,7 +285,9 @@ private fun SportsScreenContentDarkPreview() {
 @Composable
 private fun SportsScreenContentLightPreview() {
     SportsAppTheme(darkTheme = false) {
-        SportsList(
+        SportsScreen(
+            isDarkTheme = false,
+            onToggleTheme = {},
             uiState = SportsScreenState(
                 isLoading = false,
                 sports = previewSports,
@@ -254,7 +295,8 @@ private fun SportsScreenContentLightPreview() {
             ),
             onToggleExpanded = {},
             onToggleFavoritesFilter = {},
-            onToggleFavorite = {}
+            onToggleFavorite = {},
+            onRetry = {}
         )
     }
 }
