@@ -4,7 +4,6 @@ import com.kaizen.sportsapp.domain.model.Sport
 import com.kaizen.sportsapp.domain.model.SportEvent
 import com.kaizen.sportsapp.presentation.model.EventModel
 import com.kaizen.sportsapp.presentation.model.SportModel
-import com.kaizen.sportsapp.presentation.model.SportType
 import com.kaizen.sportsapp.presentation.model.sportTypeFromId
 
 /** Maps a [Sport] domain model to its UI representation. */
