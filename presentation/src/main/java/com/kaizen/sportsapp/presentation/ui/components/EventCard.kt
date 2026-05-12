@@ -55,14 +55,14 @@ fun EventCard(
         Text(
             text = countdown,
             style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.primary
+            color = MaterialTheme.colorScheme.onSurface
         )
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_xs)))
         IconButton(onClick = onFavoriteClick) {
             Icon(
                 imageVector = if (event.isFavorite) Icons.Filled.Star else Icons.Filled.StarBorder,
                 contentDescription = stringResource(if (event.isFavorite) R.string.cd_remove_from_favorites else R.string.cd_add_to_favorites),
-                tint = if (event.isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
+                tint = if (event.isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_xs)))

@@ -81,7 +81,7 @@ internal fun SportsScreen(
                 title = {
                     Text(
                         text = stringResource(R.string.sports_screen_title),
-                        color = MaterialTheme.colorScheme.onSecondary
+                        color = MaterialTheme.colorScheme.onBackground
                     )
                 },
                 actions = {
@@ -89,12 +89,12 @@ internal fun SportsScreen(
                         Icon(
                             imageVector = if (isDarkTheme) Icons.Filled.WbSunny else Icons.Filled.NightsStay,
                             contentDescription = stringResource(if (isDarkTheme) R.string.cd_switch_to_light else R.string.cd_switch_to_dark),
-                            tint = MaterialTheme.colorScheme.onSecondary
+                            tint = MaterialTheme.colorScheme.onBackground
                         )
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.secondary
+                    containerColor = MaterialTheme.colorScheme.background
                 )
             )
         },

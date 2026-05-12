@@ -37,7 +37,7 @@ fun SportSectionHeader(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surface)
+            .background(MaterialTheme.colorScheme.background)
             .padding(
                 horizontal = dimensionResource(R.dimen.spacing_l),
                 vertical = dimensionResource(R.dimen.spacing_xs)
@@ -48,7 +48,7 @@ fun SportSectionHeader(
             Icon(
                 painter = painterResource(iconRes),
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.onSurface,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(dimensionResource(R.dimen.icon_size_s))
             )
             Spacer(modifier = Modifier.width(dimensionResource(R.dimen.spacing_s)))
@@ -63,14 +63,14 @@ fun SportSectionHeader(
             Icon(
                 imageVector = if (sport.showFavoritesOnly) Icons.Filled.Star else Icons.Filled.StarBorder,
                 contentDescription = stringResource(if (sport.showFavoritesOnly) R.string.cd_show_all_events else R.string.cd_show_favorites_only),
-                tint = if (sport.showFavoritesOnly) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
+                tint = if (sport.showFavoritesOnly) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
         IconButton(onClick = onExpandToggle) {
             Icon(
                 imageVector = if (sport.isExpanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
                 contentDescription = stringResource(if (sport.isExpanded) R.string.cd_collapse else R.string.cd_expand),
-                tint = MaterialTheme.colorScheme.onSurface
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
     }

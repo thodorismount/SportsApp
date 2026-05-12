@@ -4,6 +4,14 @@ An Android app that fetches upcoming sports events from a remote API, groups the
 
 ---
 
+## Screenshots
+
+| Light Theme | Dark Theme |
+|:-----------:|:----------:|
+| <img src="screenshots/light_theme.png" width="280"/> | <img src="screenshots/dark_theme.png" width="280"/> |
+
+---
+
 ## Architecture
 
 The project follows **Clean Architecture** with a strict separation of concerns across layers, combined with an **api/impl module split** that enforces dependency inversion at the Gradle level: only `:app` (the composition root) knows about implementation classes.

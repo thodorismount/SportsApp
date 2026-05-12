@@ -12,10 +12,11 @@ private val KaizenDarkColorScheme = darkColorScheme(
     onSecondary = White,
     tertiary = AccentRed,
     onTertiary = White,
-    background = Black,
+    background = DeepDark,
     onBackground = White,
     surface = DarkGray,
     onSurface = White,
+    onSurfaceVariant = MidGray,
     error = AccentRed,
     onError = White
 )
