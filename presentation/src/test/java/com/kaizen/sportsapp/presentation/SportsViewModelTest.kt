@@ -10,6 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.serialization.SerializationException
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
@@ -104,6 +105,18 @@ internal class SportsViewModelTest {
     }
 
     @Test
+    fun `loadSports on SerializationException sets parse error message`() {
+        // given
+        every { getSportsWithFavoritesUC.execute() } returns flowOf(Result.failure(SerializationException("bad json")))
+        // when
+        val viewModel = SportsViewModel(getSportsWithFavoritesUC, toggleFavoriteUC)
+        val state = viewModel.uiState.value
+        // then
+        assertFalse(state.isLoading)
+        assertEquals("Failed to parse server response.", state.errorMessage)
+    }
+
+    @Test
     fun `loadSports on unknown exception sets generic error message`() {
         // given
         every { getSportsWithFavoritesUC.execute() } returns flowOf(Result.failure(RuntimeException("unexpected")))
@@ -131,6 +144,30 @@ internal class SportsViewModelTest {
         assertFalse(state.isLoading)
         assertNull(state.errorMessage)
         assertEquals(1, state.sports.size)
+    }
+
+    @Test
+    fun `re-emission preserves expanded and favorites filter state`() {
+        // given
+        val sportsFlow = MutableSharedFlow<Result<List<Sport>>>(extraBufferCapacity = 1)
+        every { getSportsWithFavoritesUC.execute() } returns sportsFlow
+        val viewModel = SportsViewModel(getSportsWithFavoritesUC, toggleFavoriteUC)
+
+        // first emission — defaults: expanded=true, showFavoritesOnly=false
+        sportsFlow.tryEmit(Result.success(listOf(sport())))
+
+        // user collapses the sport and enables favorites filter
+        viewModel.toggleExpanded(SPORT_ID_FOOTBALL)
+        viewModel.toggleFavoritesFilter(SPORT_ID_FOOTBALL)
+        assertFalse(viewModel.uiState.value.sports.first().isExpanded)
+        assertTrue(viewModel.uiState.value.sports.first().showFavoritesOnly)
+
+        // second emission simulating a favorites DB update
+        sportsFlow.tryEmit(Result.success(listOf(sport())))
+
+        // then — user interaction state must be preserved
+        assertFalse(viewModel.uiState.value.sports.first().isExpanded)
+        assertTrue(viewModel.uiState.value.sports.first().showFavoritesOnly)
     }
 
     @Test

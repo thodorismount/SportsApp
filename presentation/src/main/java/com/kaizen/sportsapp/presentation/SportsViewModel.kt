@@ -34,6 +34,7 @@ class SportsViewModel(
 
     // region Data loading
 
+    // Held so retry() can cancel the active collection before starting a new one.
     private var sportsJob: Job? = null
 
     private fun loadSports() {
@@ -88,7 +89,7 @@ class SportsViewModel(
         viewModelScope.launch {
             while (true) {
                 delay(1000)
-                _uiState.update { it.copy(currentTimeSeconds = it.currentTimeSeconds + 1) }
+                _uiState.update { it.copy(currentTimeSeconds = System.currentTimeMillis() / 1000) }
             }
         }
     }
