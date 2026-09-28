@@ -1,4 +1,4 @@
-# SportsApp — Kaizen Gaming Android Assessment
+# SportsApp
 
 An Android app that fetches upcoming sports events from a remote API, groups them by sport, and lets users manage favorites — all built with Clean Architecture, MVVM, and a fully modularised Gradle setup.
 
@@ -99,7 +99,7 @@ Tests follow a consistent `given / when / then` structure with MockK for mocking
 ## Extras
 
 ### Dark / light theme toggle
-A sun/moon icon button in the top app bar lets the user switch between the custom dark and light colour schemes at runtime. The preference is held in `rememberSaveable` in `MainActivity` so it survives rotation. Both schemes use the same Kaizen brand colours (Gold, PrimaryBlue, AccentRed) with appropriate background and surface adaptations for each mode.
+A sun/moon icon button in the top app bar lets the user switch between the custom dark and light colour schemes at runtime. The preference is held in `rememberSaveable` in `MainActivity` so it survives rotation. Both schemes use the following brand colours (Gold, PrimaryBlue, AccentRed) with appropriate background and surface adaptations for each mode.
 
 ### iOS companion app
 A functionally equivalent iOS version of this app was built using **[Claude Code](https://claude.ai/code)** (Anthropic's AI coding CLI) powered by the **Claude Sonnet 4.6** model, to demonstrate AI-assisted development across platforms. As an Android developer with limited Swift or SwiftUI experience, the iOS app was produced entirely through AI pair-programming — same architecture, same features, different platform.
