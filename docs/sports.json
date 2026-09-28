@@ -1,0 +1,194 @@
+[
+  {
+    "i": "FOOT",
+    "d": "SOCCER",
+    "e": [
+      { "i": "10001", "si": "FOOT", "d": "Northgate FC-Riverside United", "tt": 1790566800 },
+      { "i": "10002", "si": "FOOT", "d": "Lakeside City-Highland Rovers", "tt": 1790588400 },
+      { "i": "10003", "si": "FOOT", "d": "Coastal Athletic-Midtown FC", "tt": 1790611800 },
+      { "i": "10004", "si": "FOOT", "d": "Old Town Wanderers-Bay City", "tt": 1790635200 },
+      { "i": "10005", "si": "FOOT", "d": "Ironworks FC-Pinegrove United", "tt": 1790654400 },
+      { "i": "10006", "si": "FOOT", "d": "Redwood Rovers-Central Athletic", "tt": 1790683200 },
+      { "i": "10007", "si": "FOOT", "d": "Silverlake FC-Eastfield Town", "tt": 1790712000 },
+      { "i": "10008", "si": "FOOT", "d": "Harborline SC-Kingswood FC", "tt": 1790740800 },
+      { "i": "10009", "si": "FOOT", "d": "Fairmont FC-Ashborough United", "tt": 1790769600 },
+      { "i": "10010", "si": "FOOT", "d": "Millbrook Rovers-Cornerstone SC", "tt": 1790798400 },
+      { "i": "10011", "si": "FOOT", "d": "Ravenhurst FC-Blackpine Athletic", "tt": 1790827200 },
+      { "i": "10012", "si": "FOOT", "d": "Sandridge Town-Newport City", "tt": 1790856000 },
+      { "i": "10013", "si": "FOOT", "d": "Westgate United-Copperfield FC", "tt": 1790884800 },
+      { "i": "10014", "si": "FOOT", "d": "Meadowfield SC-Bramblewood FC", "tt": 1790913600 },
+      { "i": "10015", "si": "FOOT", "d": "Northline Rovers-Whitecrest FC", "tt": 1790942400 },
+      { "i": "10016", "si": "FOOT", "d": "Autumnbrook FC-Elmgrove United", "tt": 1790971200 },
+      { "i": "10017", "si": "FOOT", "d": "Riverwind SC-Hollowdale FC", "tt": 1791000000 },
+      { "i": "10018", "si": "FOOT", "d": "Cascade City-Grandview Athletic", "tt": 1791028800 },
+      { "i": "10019", "si": "FOOT", "d": "Bramblegate FC-Sunbridge United", "tt": 1791057600 },
+      { "i": "10020", "si": "FOOT", "d": "Ironpeak FC-Lowfield Rovers", "tt": 1791086400 },
+      { "i": "10021", "si": "FOOT", "d": "Foxwood FC-Ravenscroft United", "tt": 1791115200 },
+      { "i": "10022", "si": "FOOT", "d": "Stormline Athletic-Wildmere FC", "tt": 1791144000 },
+      { "i": "10023", "si": "FOOT", "d": "Larkfield SC-Ashbury Wanderers", "tt": 1791172800 },
+      { "i": "10024", "si": "FOOT", "d": "Bellwood FC-Timberlane Rovers", "tt": 1791201600 },
+      { "i": "10025", "si": "FOOT", "d": "Blackstone FC-Marshvale United", "tt": 1791230400 },
+      { "i": "10026", "si": "FOOT", "d": "Highfield SC-Ravenscliffe FC", "tt": 1791259200 },
+      { "i": "10027", "si": "FOOT", "d": "Barrowford FC-Ashenwood Athletic", "tt": 1791288000 },
+      { "i": "10028", "si": "FOOT", "d": "Whitfield SC-Kestrelbank FC", "tt": 1791316800 },
+      { "i": "10029", "si": "FOOT", "d": "Portside Rangers-Uplands FC", "tt": 1791345600 },
+      { "i": "10030", "si": "FOOT", "d": "Hollowbrook FC-Northshire Athletic", "tt": 1791374400 },
+      { "i": "10031", "si": "FOOT", "d": "Grandville Rovers-Silvermill FC", "tt": 1791403200 },
+      { "i": "10032", "si": "FOOT", "d": "Ashwater FC-Eastholme United", "tt": 1791432000 },
+      { "i": "10033", "si": "FOOT", "d": "Copperline SC-Farthing Town", "tt": 1791460800 },
+      { "i": "10034", "si": "FOOT", "d": "Ironhold FC-Riverfield United", "tt": 1791489600 },
+      { "i": "10035", "si": "FOOT", "d": "Emberfield FC-Blackwater Rovers", "tt": 1791518400 },
+      { "i": "10036", "si": "FOOT", "d": "Baytown Athletic-Milestone FC", "tt": 1791547200 },
+      { "i": "10037", "si": "FOOT", "d": "Cliffbrook FC-Weststone United", "tt": 1791576000 },
+      { "i": "10038", "si": "FOOT", "d": "Ashgate Rovers-Longmere FC", "tt": 1791604800 },
+      { "i": "10039", "si": "FOOT", "d": "Havenport FC-Blackrock City", "tt": 1791633600 },
+      { "i": "10040", "si": "FOOT", "d": "Norwind Rovers-Redgate United", "tt": 1791662400 },
+      { "i": "10041", "si": "FOOT", "d": "Sunrock FC-Vinemount Athletic", "tt": 1791691200 },
+      { "i": "10042", "si": "FOOT", "d": "Whitesand FC-Kelpwood Rovers", "tt": 1791720000 },
+      { "i": "10043", "si": "FOOT", "d": "Fairhaven FC-Cinderhill United", "tt": 1790611800 },
+      { "i": "10044", "si": "FOOT", "d": "Ridgewood SC-Larkspur FC", "tt": 1790683200 },
+      { "i": "10045", "si": "FOOT", "d": "Ashmoor FC-Tallgrass United", "tt": 1790769600 },
+      { "i": "10046", "si": "FOOT", "d": "Kingsford FC-Wolvermere Athletic", "tt": 1790856000 },
+      { "i": "10047", "si": "FOOT", "d": "Coldspring FC-Silvergate Rovers", "tt": 1790942400 },
+      { "i": "10048", "si": "FOOT", "d": "Southwold FC-Fentonbridge United", "tt": 1791028800 }
+    ]
+  },
+  {
+    "i": "BASK",
+    "d": "BASKETBALL",
+    "e": [
+      { "i": "20001", "si": "BASK", "d": "Skyline Titans-Delta Falcons", "tt": 1790625600 },
+      { "i": "20002", "si": "BASK", "d": "Steelworks Suns-Riverbend Hawks", "tt": 1790712000 },
+      { "i": "20003", "si": "BASK", "d": "Metro Wolves-Coastline Storm", "tt": 1790798400 },
+      { "i": "20004", "si": "BASK", "d": "Grand City Kings-Iron Ridge Bears", "tt": 1790884800 },
+      { "i": "20005", "si": "BASK", "d": "Highland Comets-Uptown Vipers", "tt": 1791057600 }
+    ]
+  },
+  {
+    "i": "TENN",
+    "d": "TENNIS",
+    "e": [
+      { "i": "30001", "si": "TENN", "d": "LucasHargrove-EmilStorm", "tt": 1790566800 },
+      { "i": "30002", "si": "TENN", "d": "RafaelMoreno-JonasHeinemann", "tt": 1790588400 },
+      { "i": "30003", "si": "TENN", "d": "TomasKarpov-ArminSturm", "tt": 1790611800 },
+      { "i": "30004", "si": "TENN", "d": "NikolasVelasco-PavelZubkov", "tt": 1790635200 },
+      { "i": "30005", "si": "TENN", "d": "JulienDelacroix-MikhailTarasov", "tt": 1790654400 },
+      { "i": "30006", "si": "TENN", "d": "FinnRundgren-CarlosOrtega", "tt": 1790683200 },
+      { "i": "30007", "si": "TENN", "d": "SebastienValois-AndreasBrenner", "tt": 1790712000 },
+      { "i": "30008", "si": "TENN", "d": "IgnacioReyes-DimitriosLantzos", "tt": 1790740800 },
+      { "i": "30009", "si": "TENN", "d": "MatiasFontaine-KevinAshdown", "tt": 1790769600 },
+      { "i": "30010", "si": "TENN", "d": "LiamCorbett-EthanPollard", "tt": 1790798400 },
+      { "i": "30011", "si": "TENN", "d": "ArturBonnier-VincentLautrec", "tt": 1790827200 },
+      { "i": "30012", "si": "TENN", "d": "HenrikSaltvik-BastianKoehler", "tt": 1790856000 },
+      { "i": "30013", "si": "TENN", "d": "EliasNordlund-MarcoTiberi", "tt": 1790884800 },
+      { "i": "30014", "si": "TENN", "d": "FelipeCastillo-AdrianHollander", "tt": 1790913600 },
+      { "i": "30015", "si": "TENN", "d": "RyanTorrance-JackMcAllister", "tt": 1790942400 },
+      { "i": "30016", "si": "TENN", "d": "NoahBellinger-MatteoConti", "tt": 1790971200 },
+      { "i": "30017", "si": "TENN", "d": "RemiFournier-TomasLindqvist", "tt": 1791000000 },
+      { "i": "30018", "si": "TENN", "d": "IvanKovac-LeonardoRicci", "tt": 1791028800 },
+      { "i": "30019", "si": "TENN", "d": "HugoFlorent-BjornMalstrom", "tt": 1791057600 },
+      { "i": "30020", "si": "TENN", "d": "AlexRatnikov-JoaoAlmeida", "tt": 1791086400 },
+      { "i": "30021", "si": "TENN", "d": "AnnaLisbjerg(W)-ClaraSchoenfeld(W)", "tt": 1791115200 },
+      { "i": "30022", "si": "TENN", "d": "JennaWhitmore(W)-SofiaBartoli(W)", "tt": 1791144000 },
+      { "i": "30023", "si": "TENN", "d": "YukoHatanaka(W)-MiraBenson(W)", "tt": 1791172800 },
+      { "i": "30024", "si": "TENN", "d": "NoraLindqvist(W)-ElenaVoss(W)", "tt": 1791201600 },
+      { "i": "30025", "si": "TENN", "d": "RaquelSantana(W)-KristinaMoser(W)", "tt": 1791230400 },
+      { "i": "30026", "si": "TENN", "d": "IsabelPortier(W)-SelinAkyol(W)", "tt": 1791259200 },
+      { "i": "30027", "si": "TENN", "d": "ChloePearsall(W)-KatarinaVaris(W)", "tt": 1791288000 },
+      { "i": "30028", "si": "TENN", "d": "OliviaHartwell(W)-AmeliaKovacic(W)", "tt": 1791316800 },
+      { "i": "30029", "si": "TENN", "d": "LenaFallberg(W)-SoniaDelacroix(W)", "tt": 1791345600 },
+      { "i": "30030", "si": "TENN", "d": "MayaFontaine(W)-BeatriceLuca(W)", "tt": 1791374400 },
+      { "i": "30031", "si": "TENN", "d": "HugoFlorent/BjornMalstrom-EliasNordlund/MarcoTiberi", "tt": 1790611800 },
+      { "i": "30032", "si": "TENN", "d": "FelipeCastillo/AdrianHollander-RemiFournier/TomasLindqvist", "tt": 1790683200 },
+      { "i": "30033", "si": "TENN", "d": "LucasHargrove/EmilStorm-IvanKovac/LeonardoRicci", "tt": 1790769600 },
+      { "i": "30034", "si": "TENN", "d": "JulienDelacroix/MikhailTarasov-FinnRundgren/CarlosOrtega", "tt": 1790856000 },
+      { "i": "30035", "si": "TENN", "d": "RafaelMoreno/JonasHeinemann-TomasKarpov/ArminSturm", "tt": 1790942400 },
+      { "i": "30036", "si": "TENN", "d": "NikolasVelasco/PavelZubkov-SebastienValois/AndreasBrenner", "tt": 1791028800 },
+      { "i": "30037", "si": "TENN", "d": "IgnacioReyes/DimitriosLantzos-MatiasFontaine/KevinAshdown", "tt": 1791115200 },
+      { "i": "30038", "si": "TENN", "d": "LiamCorbett/EthanPollard-ArturBonnier/VincentLautrec", "tt": 1791201600 },
+      { "i": "30039", "si": "TENN", "d": "HenrikSaltvik/BastianKoehler-RyanTorrance/JackMcAllister", "tt": 1791288000 },
+      { "i": "30040", "si": "TENN", "d": "AnnaLisbjerg(W)/ClaraSchoenfeld(W)-JennaWhitmore(W)/SofiaBartoli(W)", "tt": 1791374400 },
+      { "i": "30041", "si": "TENN", "d": "YukoHatanaka(W)/MiraBenson(W)-NoraLindqvist(W)/ElenaVoss(W)", "tt": 1791460800 },
+      { "i": "30042", "si": "TENN", "d": "RaquelSantana(W)/KristinaMoser(W)-IsabelPortier(W)/SelinAkyol(W)", "tt": 1791547200 },
+      { "i": "30043", "si": "TENN", "d": "ChloePearsall(W)/KatarinaVaris(W)-OliviaHartwell(W)/AmeliaKovacic(W)", "tt": 1791633600 },
+      { "i": "30044", "si": "TENN", "d": "LenaFallberg(W)/SoniaDelacroix(W)-MayaFontaine(W)/BeatriceLuca(W)", "tt": 1791720000 }
+    ]
+  },
+  {
+    "i": "TABL",
+    "d": "TABLE TENNIS",
+    "e": [
+      { "i": "80001", "si": "TABL", "d": "KenjiSato-HansBauer", "tt": 1790586000 },
+      { "i": "80002", "si": "TABL", "d": "PawelNovak-YongChen", "tt": 1790672400 },
+      { "i": "80003", "si": "TABL", "d": "ErikAlmeida-DavidWhitfield", "tt": 1790758800 },
+      { "i": "80004", "si": "TABL", "d": "NielsRasmussen-OveLindberg", "tt": 1790845200 },
+      { "i": "80005", "si": "TABL", "d": "MartinKovac-JoshHollander", "tt": 1790931600 },
+      { "i": "80006", "si": "TABL", "d": "ViktorStein-SamuelKirchner", "tt": 1791018000 },
+      { "i": "80007", "si": "TABL", "d": "TomiVirtanen-MateoRuiz", "tt": 1791104400 },
+      { "i": "80008", "si": "TABL", "d": "AndrzejPietrzak-HugoBerner", "tt": 1791190800 },
+      { "i": "80009", "si": "TABL", "d": "RolandoFioretti-MikaelHolm", "tt": 1791277200 },
+      { "i": "80010", "si": "TABL", "d": "ThomasBerthold-JukkaLahtinen", "tt": 1791363600 },
+      { "i": "80011", "si": "TABL", "d": "IlkkaAaltonen-DamirVidak", "tt": 1791450000 },
+      { "i": "80012", "si": "TABL", "d": "RaimundJansen-OttoWilhelm", "tt": 1791536400 },
+      { "i": "80013", "si": "TABL", "d": "FelixHartl-BorisKlement", "tt": 1791622800 },
+      { "i": "80014", "si": "TABL", "d": "LukasZeitler-DanielKovacs", "tt": 1791709200 }
+    ]
+  },
+  {
+    "i": "VOLL",
+    "d": "VOLLEYBALL",
+    "e": [
+      { "i": "40001", "si": "VOLL", "d": "Seaside Spikers-Highland Aces", "tt": 1790654400 },
+      { "i": "40002", "si": "VOLL", "d": "Northport Blazers-Sunridge Waves", "tt": 1790913600 },
+      { "i": "40003", "si": "VOLL", "d": "Cliffside Titans-Meadowbrook VC", "tt": 1791244800 }
+    ]
+  },
+  {
+    "i": "ESPS",
+    "d": "ESPORTS",
+    "e": [
+      { "i": "70001", "si": "ESPS", "d": "Nova Legion-Apex Reign", "tt": 1790604000 },
+      { "i": "70002", "si": "ESPS", "d": "Phoenix Circuit-Iron Vanguard", "tt": 1790863200 }
+    ]
+  },
+  {
+    "i": "ICEH",
+    "d": "ICE HOCKEY",
+    "e": [
+      { "i": "50001", "si": "ICEH", "d": "Glacier Wolves-Northline Blades", "tt": 1790611800 }
+    ]
+  },
+  {
+    "i": "HAND",
+    "d": "HANDBALL",
+    "e": [
+      { "i": "60001", "si": "HAND", "d": "Central HC-Riverside Union", "tt": 1790618400 },
+      { "i": "60002", "si": "HAND", "d": "Portside Eagles-Northgate HC", "tt": 1790965200 }
+    ]
+  },
+  {
+    "i": "SNOO",
+    "d": "SNOOKER",
+    "e": [
+      { "i": "90001", "si": "SNOO", "d": "GeoffreyAshcroft-PeterSinclair", "tt": 1790632800 },
+      { "i": "90002", "si": "SNOO", "d": "RowanMilburn-AlfredTrescothick", "tt": 1791065400 }
+    ]
+  },
+  {
+    "i": "FUTS",
+    "d": "FUTSAL",
+    "e": [
+      { "i": "B0001", "si": "FUTS", "d": "Downtown Sparks-Harbourside FC", "tt": 1790615400 }
+    ]
+  },
+  {
+    "i": "DART",
+    "d": "DARTS",
+    "e": [
+      { "i": "A0001", "si": "DART", "d": "DanielHollingsworth-TerenceKilbride", "tt": 1790598600 },
+      { "i": "A0002", "si": "DART", "d": "StuartBarrowman-RyanFenwick", "tt": 1790944800 },
+      { "i": "A0003", "si": "DART", "d": "LiamAinsworth-KennethBramwell", "tt": 1791203800 },
+      { "i": "A0004", "si": "DART", "d": "ColinRedgrave-MartinHalliday", "tt": 1791463000 }
+    ]
+  }
+]
