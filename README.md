@@ -2,7 +2,7 @@
 
 An Android app that fetches upcoming sports events from a remote API, groups them by sport, and lets users manage favorites — all built with Clean Architecture, MVVM, and a fully modularised Gradle setup.
 
-The remote data is a static JSON file (`docs/sports.json` in this repo) served via GitHub Pages at [`thodorismount.github.io/SportsApp/sports.json`](https://thodorismount.github.io/SportsApp/sports.json).
+The remote data is a static JSON file (`docs/sports.json` in this repo) served via GitHub Pages at [`thodorismount.github.io/SportsApp/docs/sports.json`](https://thodorismount.github.io/SportsApp/docs/sports.json).
 
 ---
 

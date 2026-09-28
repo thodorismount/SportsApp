@@ -14,6 +14,7 @@ internal fun SportDto.toDomain() = Sport(
 internal fun EventDto.toDomain() = SportEvent(
     id = id,
     sportId = sportId,
-    name = name,
+    homeTeam = homeTeam,
+    awayTeam = awayTeam,
     startTime = startTime
 )

@@ -25,10 +25,9 @@ Clean Architecture + MVVM with a multi-module api/impl split. Only `:app` (compo
 - **Serialization**: kotlinx.serialization
 
 ## API
-Endpoint: https://thodorismount.github.io/SportsApp/sports.json
-Response: List of sports, each with id ("i"), name ("d"), and events ("e").
-Event fields: id ("i"), sportId ("si"), name ("d"), startTime unix seconds ("tt").
-Event name format: "Competitor1-Competitor2" — split on "-" for display.
+Endpoint: https://thodorismount.github.io/SportsApp/docs/sports.json
+Response: List of sports. Each sport has `id`, `name`, and `events`.
+Event fields: `id`, `sportId`, `homeTeam`, `awayTeam`, `startTime` (unix seconds).
 
 The JSON is a static file served via GitHub Pages from `docs/sports.json` in this repo. To refresh sample data, edit that file and push to `main`.
 

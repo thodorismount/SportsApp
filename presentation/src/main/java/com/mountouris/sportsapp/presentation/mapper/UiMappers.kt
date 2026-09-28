@@ -6,7 +6,6 @@ import com.mountouris.sportsapp.presentation.model.EventModel
 import com.mountouris.sportsapp.presentation.model.SportModel
 import com.mountouris.sportsapp.presentation.model.sportTypeFromId
 
-/** Maps a [Sport] domain model to its UI representation. */
 fun Sport.toUiModel() = SportModel(
     id = id,
     name = name,
@@ -14,18 +13,11 @@ fun Sport.toUiModel() = SportModel(
     icon = sportTypeFromId(id).iconRes
 )
 
-/**
- * Maps a [SportEvent] domain model to its UI representation.
- * Splits the raw event name on "-" to extract the two competitor names.
- */
-fun SportEvent.toUiModel(): EventModel {
-    val parts = name.split("-", limit = 2)
-    return EventModel(
-        id = id,
-        sportId = sportId,
-        competitor1 = parts[0].trim(),
-        competitor2 = parts.getOrElse(1) { "" }.trim(),
-        startTime = startTime,
-        isFavorite = isFavorite
-    )
-}
+fun SportEvent.toUiModel() = EventModel(
+    id = id,
+    sportId = sportId,
+    competitor1 = homeTeam,
+    competitor2 = awayTeam,
+    startTime = startTime,
+    isFavorite = isFavorite
+)

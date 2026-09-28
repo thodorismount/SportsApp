@@ -153,7 +153,7 @@ internal class GetSportsWithFavoritesUCImplTest {
         Sport(id = id, name = id, events = events)
 
     private fun event(id: String) =
-        SportEvent(id = id, sportId = SPORT_ID_FOOTBALL, name = "Panathinaikos-Olympiakos", startTime = 1_700_000_000L)
+        SportEvent(id = id, sportId = SPORT_ID_FOOTBALL, homeTeam = "Panathinaikos", awayTeam = "Olympiakos", startTime = 1_700_000_000L)
 
     // endregion
 }
