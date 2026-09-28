@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kaizen.sportsapp.remote"
+    namespace = "com.mountouris.sportsapp.remote"
     compileSdk = 36
 
     defaultConfig {

@@ -1,0 +1,304 @@
+package com.mountouris.sportsapp.presentation.ui.screens
+
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.NightsStay
+import androidx.compose.material.icons.filled.WbSunny
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
+import androidx.compose.ui.tooling.preview.Preview
+import com.mountouris.sportsapp.presentation.R
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.mountouris.sportsapp.presentation.SportsViewModel
+import com.mountouris.sportsapp.presentation.model.EventModel
+import com.mountouris.sportsapp.presentation.ui.theme.SportsAppTheme
+import com.mountouris.sportsapp.presentation.model.SportsScreenState
+import com.mountouris.sportsapp.presentation.model.SportModel
+import com.mountouris.sportsapp.presentation.ui.components.ErrorView
+import com.mountouris.sportsapp.presentation.ui.components.EventCard
+import com.mountouris.sportsapp.presentation.ui.components.SportSectionHeader
+import org.koin.androidx.compose.koinViewModel
+
+@Composable
+fun SportsScreen(
+    isDarkTheme: Boolean,
+    onToggleTheme: () -> Unit,
+    viewModel: SportsViewModel = koinViewModel()
+) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    SportsScreen(
+        isDarkTheme = isDarkTheme,
+        onToggleTheme = onToggleTheme,
+        uiState = uiState,
+        onToggleExpanded = viewModel::toggleExpanded,
+        onToggleFavoritesFilter = viewModel::toggleFavoritesFilter,
+        onToggleFavorite = viewModel::toggleFavorite,
+        onRetry = viewModel::retry
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun SportsScreen(
+    isDarkTheme: Boolean,
+    onToggleTheme: () -> Unit,
+    uiState: SportsScreenState,
+    onToggleExpanded: (sportId: String) -> Unit,
+    onToggleFavoritesFilter: (sportId: String) -> Unit,
+    onToggleFavorite: (eventId: String) -> Unit,
+    onRetry: () -> Unit
+) {
+    val error = uiState.errorMessage
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        text = stringResource(R.string.sports_screen_title),
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
+                },
+                actions = {
+                    IconButton(onClick = onToggleTheme) {
+                        Icon(
+                            imageVector = if (isDarkTheme) Icons.Filled.WbSunny else Icons.Filled.NightsStay,
+                            contentDescription = stringResource(if (isDarkTheme) R.string.cd_switch_to_light else R.string.cd_switch_to_dark),
+                            tint = MaterialTheme.colorScheme.onBackground
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background
+                )
+            )
+        },
+        containerColor = MaterialTheme.colorScheme.background
+    ) { paddingValues ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
+            when {
+                uiState.isLoading -> CircularProgressIndicator(
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .semantics { testTag = TestTags.LOADING_INDICATOR },
+                    color = MaterialTheme.colorScheme.primary
+                )
+
+                error != null -> ErrorView(
+                    message = error,
+                    onRetry = onRetry
+                )
+
+                uiState.sports.isEmpty() -> Text(
+                    text = stringResource(R.string.no_events_available),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    modifier = Modifier.align(Alignment.Center)
+                )
+
+                else -> SportsList(
+                    uiState = uiState,
+                    onToggleExpanded = onToggleExpanded,
+                    onToggleFavoritesFilter = onToggleFavoritesFilter,
+                    onToggleFavorite = onToggleFavorite
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun SportsList(
+    uiState: SportsScreenState,
+    onToggleExpanded: (sportId: String) -> Unit,
+    onToggleFavoritesFilter: (sportId: String) -> Unit,
+    onToggleFavorite: (eventId: String) -> Unit
+) {
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
+        uiState.sports.forEach { sport ->
+            item(key = "header_${sport.id}") {
+                SportSectionHeader(
+                    sport = sport,
+                    onFavoritesFilterToggle = { onToggleFavoritesFilter(sport.id) },
+                    onExpandToggle = { onToggleExpanded(sport.id) }
+                )
+            }
+            item(key = "events_${sport.id}") {
+                SportEventRow(
+                    sport = sport,
+                    currentTimeSeconds = uiState.currentTimeSeconds,
+                    onToggleFavorite = onToggleFavorite
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun SportEventRow(
+    sport: SportModel,
+    currentTimeSeconds: Long,
+    onToggleFavorite: (eventId: String) -> Unit
+) {
+    AnimatedVisibility(visible = sport.isExpanded) {
+        LazyRow(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(MaterialTheme.colorScheme.background),
+            contentPadding = PaddingValues(
+                horizontal = dimensionResource(R.dimen.spacing_s),
+                vertical = dimensionResource(R.dimen.spacing_s)
+            ),
+            horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_s))
+        ) {
+            items(items = sport.displayedEvents, key = { it.id }) { event ->
+                EventCard(
+                    event = event,
+                    currentTimeSeconds = currentTimeSeconds,
+                    onFavoriteClick = { onToggleFavorite(event.id) }
+                )
+            }
+        }
+    }
+}
+
+// region Previews
+
+private const val previewTime = 1_700_000_000L
+
+private val previewSports = listOf(
+    SportModel(
+        id = "FOOT",
+        name = "Football",
+        icon = R.drawable.ic_sport_soccer,
+        events = listOf(
+            EventModel("1", "FOOT", "PAOK", "Olympiakos", previewTime + 3_600, isFavorite = true),
+            EventModel(
+                "2",
+                "FOOT",
+                "Man United",
+                "Chelsea",
+                previewTime + 7_200,
+                isFavorite = false
+            )
+        ),
+        isExpanded = true,
+        showFavoritesOnly = false
+    ),
+    SportModel(
+        id = "BASK",
+        name = "Basketball",
+        icon = R.drawable.ic_sport_basketball,
+        events = listOf(
+            EventModel("3", "BASK", "Lakers", "Celtics", previewTime + 1_800, isFavorite = false)
+        ),
+        isExpanded = false,
+        showFavoritesOnly = false
+    )
+)
+
+@Preview(showBackground = true, backgroundColor = 0xFF000000)
+@Composable
+private fun SportsScreenLoadingPreview() {
+    SportsAppTheme(darkTheme = true) {
+        SportsScreen(
+            isDarkTheme = true,
+            onToggleTheme = {},
+            uiState = SportsScreenState(isLoading = true),
+            onToggleExpanded = {},
+            onToggleFavoritesFilter = {},
+            onToggleFavorite = {},
+            onRetry = {}
+        )
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFF000000)
+@Composable
+private fun SportsScreenErrorPreview() {
+    SportsAppTheme(darkTheme = true) {
+        SportsScreen(
+            isDarkTheme = true,
+            onToggleTheme = {},
+            uiState = SportsScreenState(
+                isLoading = false,
+                errorMessage = "No internet connection. Please check your network."
+            ),
+            onToggleExpanded = {},
+            onToggleFavoritesFilter = {},
+            onToggleFavorite = {},
+            onRetry = {}
+        )
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFF000000)
+@Composable
+private fun SportsScreenContentDarkPreview() {
+    SportsAppTheme(darkTheme = true) {
+        SportsScreen(
+            isDarkTheme = true,
+            onToggleTheme = {},
+            uiState = SportsScreenState(
+                isLoading = false,
+                sports = previewSports,
+                currentTimeSeconds = previewTime
+            ),
+            onToggleExpanded = {},
+            onToggleFavoritesFilter = {},
+            onToggleFavorite = {},
+            onRetry = {}
+        )
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
+@Composable
+private fun SportsScreenContentLightPreview() {
+    SportsAppTheme(darkTheme = false) {
+        SportsScreen(
+            isDarkTheme = false,
+            onToggleTheme = {},
+            uiState = SportsScreenState(
+                isLoading = false,
+                sports = previewSports,
+                currentTimeSeconds = previewTime
+            ),
+            onToggleExpanded = {},
+            onToggleFavoritesFilter = {},
+            onToggleFavorite = {},
+            onRetry = {}
+        )
+    }
+}
+
+// endregion

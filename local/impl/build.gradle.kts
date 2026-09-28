@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kaizen.sportsapp.local"
+    namespace = "com.mountouris.sportsapp.local"
     compileSdk = 36
 
     defaultConfig {

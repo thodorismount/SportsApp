@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.kaizen.sportsapp"
+    namespace = "com.mountouris.sportsapp"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.kaizen.sportsapp"
+        applicationId = "com.mountouris.sportsapp"
         minSdk = 23
         targetSdk = 36
         versionCode = 1

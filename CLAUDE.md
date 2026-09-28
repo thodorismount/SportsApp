@@ -1,4 +1,4 @@
-# SportsApp — Kaizen Gaming Assessment
+# SportsApp — Android Assessment
 
 ## Project Overview
 Android sports events app. Displays upcoming events grouped by sport, with favorites, countdown timers, and collapse/expand per sport.
